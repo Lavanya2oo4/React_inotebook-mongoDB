@@ -1,7 +1,0 @@
-1.
-Created iNotebook
-->Initialed it as a react project(npx create-react-app .)
-->created a folder for backend in it named Backend
-->Instiliased it as node project (npm init)
-->Installed express(npm i express)
-->Installed mongoose(npm i mongoose)
