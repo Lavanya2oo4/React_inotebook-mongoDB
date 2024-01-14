@@ -1,13 +1,13 @@
 import React from 'react'
-const Home = () => {
+const About = () => {
 
   
   return (
     <div>
-      I am home
+      I am About
       <hr/>
     </div>
   )
 }
 
-export default Home
+export default About

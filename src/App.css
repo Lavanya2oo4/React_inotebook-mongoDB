@@ -7,7 +7,7 @@
   margin: 0;
   padding: 0;
   font-family: var(--font1);
-  font-weight: 600;
+  font-weight: 900;
 }
 
 
@@ -22,7 +22,10 @@
   margin: 0;
   padding: 0;
 }
-
+.nav-link{
+ font-size: 3vh;
+ font-weight: 900;
+}
 /* Home*/
 
 /* Media Query */
