@@ -8,25 +8,25 @@ import {
   Link,
   Routes
 } from "react-router-dom";
-
+import NoteState from './Context/notes/NoteState';
 
 function App() {
   return (
     <>
 
+      <NoteState>
 
+        {/* Router */}
 
-      {/* Router */}
+        <Router>
+          <Navbar />
 
-      <Router>
-        <Navbar />
+          <Routes>
+            <Route exact path="/" element={<Home />} />
+          </Routes>
+        </Router>
 
-        <Routes>
-          <Route exact path="/" element={<Home />} />
-        </Routes>
-      </Router>
-
-
+      </NoteState>
     </>
   );
 }
