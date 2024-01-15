@@ -5,7 +5,7 @@ const NoteState = (props) => {
 
   const initialNotes = [
     {
-      "_id": "65934c14cb22da32d1eb7eac",
+      "_id": "65934c14cb22ssjskjasa32d1eb7eac",
       "user": "659337031a9e1ef5d61b0cd6",
       "title": "Get up you",
       "description": "Early Bird",
@@ -14,7 +14,7 @@ const NoteState = (props) => {
       "__v": 0
     },
     {
-      "_id": "65934c14cb22da32d1eb7eah",
+      "_id": "65934c1asjsjcb22da32d1eb7eah",
       "user": "659337031a9e1ef5d61b0cd6",
       "title": "Get up you",
       "description": "Early Bird",

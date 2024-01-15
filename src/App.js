@@ -8,6 +8,8 @@ import {
   Routes
 } from "react-router-dom";
 import NoteState from './Context/notes/NoteState';
+import Alert from './components/Alert';
+import Footer from './components/Footer';
 
 function App() {
   return (
@@ -18,11 +20,13 @@ function App() {
 
         <Router>
           <Navbar />
+          <Alert message="Done!!"/>
 
           <Routes>
             <Route exact path="/" element={<Home />} />
             <Route exact path="/about" element={<About />} />
           </Routes>
+          <Footer/>
         </Router>
       </NoteState>
 

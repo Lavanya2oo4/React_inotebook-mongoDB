@@ -12,13 +12,13 @@ const Navbar = () => {
     let location = useLocation()
 
     useEffect(() => {
-        console.log(location)
+        // console.log(location)
 
     })
     return (
         <>
 
-            <nav className="navbar navbar-expand-lg bg-body-tertiary " data-bs-theme="dark">
+            <nav className="navbar navbar-expand-lg bg-body-tertiary fixed-top" data-bs-theme="dark">
                 <div className="container-fluid">
                     <Link className="navbar-brand" to="/">
                         <img src="/logo.png" style={{ height: "6vh", margin: "0 1vh" }} />

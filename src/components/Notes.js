@@ -10,13 +10,15 @@ const Notes = () => {
       <h2>
         Your Notes:
       </h2>
+      <div className='row container' >
       {
         notes.map((note)=>{
-          return <NoteItem key={note.id} note={note}></NoteItem>
+          return <NoteItem key={note._id} note={note}></NoteItem>
           
          
         })
       }
+      </div>
     </div>
   )
 }
