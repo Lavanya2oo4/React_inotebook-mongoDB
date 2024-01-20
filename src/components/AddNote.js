@@ -19,7 +19,7 @@ const AddNote = () => {
         console.log("NotAdded")
     }
     let handleChange=(e)=>{
-      setNote({...note,[e.target.name]:[e.target.value]})
+      setNote({...note,[e.target.name]:e.target.value})
     //  keep whatever was in previous array and updates value of whatever "e" is to whatever user is entering 
     // e.g. user is updating title so value to title in array will change to whatever user is writing
     }

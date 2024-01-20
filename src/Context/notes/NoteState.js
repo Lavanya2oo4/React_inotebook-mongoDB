@@ -24,11 +24,8 @@ const NoteState = (props) => {
       },
       body: JSON.stringify({ title, description, tag }),
     });
-    let json = await response.json()
-    console.log(json)
-
-
-
+    // let json = await response.json()
+    // console.log(json)
 
 
     // let newNote = {
@@ -41,6 +38,7 @@ const NoteState = (props) => {
     //   "__v": 0
     // }
     // setNotes(notes.concat(newNote))  //array.concat returns a new array so this will set value of state to new array
+    getNotes()
 
   }
 
