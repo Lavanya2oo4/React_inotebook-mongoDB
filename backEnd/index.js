@@ -1,6 +1,11 @@
 const express= require("express")
 const connectToMongo = require("./db")
+
+const cors=require("cors")//if this middleware is not used browser can not send request to this api at local host
+
 const app=express()
+app.use(cors())
+
 const port=5001
 
 connectToMongo()    //imported from db.js and is connecting to database

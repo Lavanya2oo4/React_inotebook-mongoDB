@@ -12,7 +12,7 @@
   margin: 0;
   padding: 0;
   font-family: var(--font1);
-  font-weight: 900;
+  font-weight: 1000;
 }
 
 
@@ -95,7 +95,7 @@ form input{
   min-width:25vw;
   max-width:25vw;
   margin: 1vh 1.5vw;
-  border:2px solid #434348ac;
+  border:1px solid #aeaeb3f1;
 
 }
 

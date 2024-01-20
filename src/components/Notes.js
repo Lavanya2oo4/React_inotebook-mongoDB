@@ -1,9 +1,13 @@
-import React, { useContext } from 'react'
+import React, { useContext, useEffect } from 'react'
 import noteContext from "../Context/notes/NoteContext"
 import NoteItem from './NoteItem'
 const Notes = () => {
     let context=useContext(noteContext)
-    const {notes,setNotes}=context
+    const {notes,setNotes,getNotes}=context
+    //calls get notes only once when page is loaded
+    useEffect(()=>{
+       getNotes()
+    },[])
   return (
     
     <div style={{marginBottom:"10vh"}}>
