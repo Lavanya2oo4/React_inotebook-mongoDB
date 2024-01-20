@@ -6,14 +6,14 @@ const Notes = () => {
     const {notes,setNotes}=context
   return (
     
-    <div>
+    <div style={{marginBottom:"10vh"}}>
       <h2>
         Your Notes:
       </h2>
-      <div className='row container' >
+      <div className='container noteBox' >
       {
         notes.map((note)=>{
-          return <NoteItem key={note._id} note={note}></NoteItem>
+          return <NoteItem key={note._id} note={note} ></NoteItem>
           
          
         })

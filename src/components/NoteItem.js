@@ -1,16 +1,18 @@
-import React from 'react'
+import React, { useContext } from 'react'
 import edit from "../images/edit.png"
 import trash from "../images/trash-bin.png"
+import noteContext from '../Context/notes/NoteContext'
 
 
 const NoteItem = (props) => {
     const { note } = props
+    const {deleteNote}=useContext(noteContext)
 
     // formatting date
     let date = new Date(note.date)
     let dateFormatted = date.toUTCString()
     return (
-        <div className='col-sm'>
+        <div className='note'>
             {/* {note.title}
       {note.description}
       {note.date} */}
@@ -22,8 +24,10 @@ const NoteItem = (props) => {
                     <p style={{ textTransform: "uppercase" }}>{note.tag}</p>
                     <div className="editNote" >
                         <img className="editImg" src={edit} title='Edit The Note🖋️' />
-                        <img className="editImg" src={trash} title="Delete The Note❌" />
-
+                        <img className="editImg" src={trash} title="Delete The Note❌"  onClick={()=>{
+                                 deleteNote(note._id)
+                        }}/>
+                        
                     </div>
                 </div>
                 <div className="card-body">
