@@ -3,7 +3,7 @@ import noteContext from "../Context/notes/NoteContext"
 import NoteItem from './NoteItem'
 const Notes = () => {
   let context = useContext(noteContext)
-  const { notes, setNotes, getNotes } = context
+  const { notes, setNotes, getNotes, editNote } = context
 
 
   //calls get notes only once when page is loaded
@@ -13,41 +13,46 @@ const Notes = () => {
 
 
 
-// updatenote functions
-const ref=useRef(null)
+  // updatenote functions
+  const ref = useRef(null)
+  const close_ref=useRef(null)
 
-const [note,setNote]=useState({
-     "etitle":"",
-     "edescription":"",
-     "etag":""
-})
-
-
-let updateNote=(currentNote)=>{
-  ref.current.click()  //dynamically clicks on whatever element is current reference
-  setNote({
-    "etitle":currentNote.title,
-    "edescription":currentNote.description,
-    "etag":currentNote.tag,
+  const [note, setNote] = useState({
+    "id": "",
+    "etitle": "",
+    "edescription": "",
+    "etag": ""
   })
-}
+
+
+  let updateNote = (currentNote) => {
+    ref.current.click()  //dynamically clicks on whatever element is current reference
+    setNote({
+      "id":currentNote._id,
+      "etitle": currentNote.title,
+      "edescription": currentNote.description,
+      "etag": currentNote.tag,
+    })
+  }
 
 
 
-let handleClick=()=>{
-  document.getElementById("form").addEventListener("submit",(e)=>{
+  let handleClick = () => {
+    document.getElementById("form").addEventListener("submit", (e) => {
       e.preventDefault()
-  })
-  console.log("note updated to:" + note.etitle)
-}
+    })
+    // console.log("note updated to:" + note.etitle)
+    editNote(note.id, note.etitle, note.etag, note.edescription)
+    close_ref.current.click()
+  }
 
 
 
-let handleChange=(e)=>{
-setNote({...note,[e.target.name]:e.target.value})
-//  keep whatever was in previous array and updates value of whatever "e" is to whatever user is entering 
-// e.g. user is updating title so value to title in array will change to whatever user is writing
-}
+  let handleChange = (e) => {
+    setNote({ ...note, [e.target.name]: e.target.value })
+    //  keep whatever was in previous array and updates value of whatever "e" is to whatever user is entering 
+    // e.g. user is updating title so value to title in array will change to whatever user is writing
+  }
 
 
 
@@ -61,7 +66,7 @@ setNote({...note,[e.target.name]:e.target.value})
       {/* update note modal */}
       <div>
         <button type="button" ref={ref} className="btn btn-primary" data-bs-toggle="modal" data-bs-target="#exampleModal" id="toggleBtn" hidden>
-          Launch demo modal
+          Launch modal
         </button>
 
         <div className="modal fade" id="exampleModal" tabIndex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
@@ -88,7 +93,7 @@ setNote({...note,[e.target.name]:e.target.value})
 
 
                     <label htmlFor="edescription" className="form-label">Description</label>
-                    <input type="text" id="edescription" name="edescription" className="form-control" value={note.edescription}  onChange={handleChange} />
+                    <input type="text" id="edescription" name="edescription" className="form-control" value={note.edescription} onChange={handleChange} />
 
 
 
@@ -98,7 +103,7 @@ setNote({...note,[e.target.name]:e.target.value})
                 </div>
               </div>
               <div className="modal-footer">
-                <button type="button" className="btn btn-secondary" data-bs-dismiss="modal">Cancel</button>
+                <button type="button" className="btn btn-secondary" ref={close_ref} data-bs-dismiss="modal">Cancel</button>
                 <button type="button" className="btn btn-primary" onClick={handleClick}>Update Note</button>
               </div>
             </div>

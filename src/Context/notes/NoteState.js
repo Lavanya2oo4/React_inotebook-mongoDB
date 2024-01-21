@@ -104,22 +104,25 @@ const NoteState = (props) => {
       },
       body: JSON.stringify({ title, description, tag }),
     });
-    // return response.json();
+  
+    // let json=await response.json()
+    // console.log(json)
 
 
+getNotes()
 
 
+    // //code to edit note
+    // for (let index = 0; index < notes.length; index++) {
+    //   let element = notes[index]
+    //   if (element._id == id) {
+    //     element.title = title
+    //     element.description = description
+    //     element.tag = tag
+    //   }
 
-    //code to edit note
-    for (let index = 0; index < notes.length; index++) {
-      let element = notes[index]
-      if (element._id == id) {
-        element.title = title
-        element.description = description
-        element.tag = tag
-      }
-
-    }
+    // }
+    // console.log("note updated")
 
   }
 
