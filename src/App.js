@@ -20,8 +20,8 @@ function App() {
 
         <Router>
           <Navbar />
+          
           <Alert message="Done!!"/>
-
           <Routes>
             <Route exact path="/" element={<Home />} />
             <Route exact path="/about" element={<About />} />

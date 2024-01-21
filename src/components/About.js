@@ -4,7 +4,7 @@ const About = () => {
   
   return (
     <div>
-      I am About
+      
       <hr/>
     </div>
   )

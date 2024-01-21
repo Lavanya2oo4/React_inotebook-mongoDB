@@ -16,7 +16,7 @@ const AddNote = () => {
             e.preventDefault()
         })
         addNote(note.title,note.description,note.tag)
-        console.log("NotAdded")
+        // console.log("NotAdded")
     }
     let handleChange=(e)=>{
       setNote({...note,[e.target.name]:e.target.value})

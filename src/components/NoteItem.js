@@ -5,7 +5,7 @@ import noteContext from '../Context/notes/NoteContext'
 
 
 const NoteItem = (props) => {
-    const { note } = props
+    const { note,updateNote } = props
     const {deleteNote}=useContext(noteContext)
 
     // formatting date
@@ -23,7 +23,9 @@ const NoteItem = (props) => {
                 <div className="card-header flex-sB" >
                     <p style={{ textTransform: "uppercase" }}>{note.tag}</p>
                     <div className="editNote" >
-                        <img className="editImg" src={edit} title='Edit The Note🖋️' />
+                        <img className="editImg" src={edit} title='Edit The Note🖋️' onClick={()=>{
+                                 updateNote(note)
+                        }}/>
                         <img className="editImg" src={trash} title="Delete The Note❌"  onClick={()=>{
                                  deleteNote(note._id)
                         }}/>
