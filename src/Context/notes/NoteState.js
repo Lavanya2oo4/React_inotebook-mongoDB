@@ -1,5 +1,6 @@
+import AlertContext from "../alert/AlertContext";
 import NoteContext from "./NoteContext";
-import React, { useState } from 'react'
+import React, { useContext, useState } from 'react'
 
 const NoteState = (props) => {
   let host = "http://localhost:5001"

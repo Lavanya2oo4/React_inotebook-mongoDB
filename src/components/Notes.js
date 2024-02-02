@@ -1,9 +1,13 @@
 import React, { useContext, useEffect, useRef, useState } from 'react'
 import noteContext from "../Context/notes/NoteContext"
 import NoteItem from './NoteItem'
+import AlertContext from '../Context/alert/AlertContext'
 const Notes = () => {
   let context = useContext(noteContext)
+  let alertContext=useContext(AlertContext)
+
   const { notes, setNotes, getNotes, editNote } = context
+  const {setAlert}=alertContext
 
 
   //calls get notes only once when page is loaded
@@ -44,6 +48,8 @@ const Notes = () => {
     // console.log("note updated to:" + note.etitle)
     editNote(note.id, note.etitle, note.etag, note.edescription)
     close_ref.current.click()
+    setAlert("Note Updated","success",false)
+
   }
 
 
@@ -104,7 +110,7 @@ const Notes = () => {
               </div>
               <div className="modal-footer">
                 <button type="button" className="btn btn-secondary" ref={close_ref} data-bs-dismiss="modal">Cancel</button>
-                <button type="button" className="btn btn-primary" onClick={handleClick}>Update Note</button>
+                <button type="button"  disabled={note.etitle.length<=5 || note.etag.length<=5 || note.edescription.length<=5} className="btn btn-primary" onClick={handleClick}>Update Note</button>
               </div>
             </div>
           </div>
@@ -121,6 +127,7 @@ const Notes = () => {
         Your Notes:
       </h2>
       <div className='container noteBox' >
+        {notes.length===0 && "⚠️No Notes To Display."}
         {
           notes.map((note) => {
             return <NoteItem key={note._id} note={note} updateNote={updateNote}></NoteItem>

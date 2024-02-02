@@ -15,8 +15,10 @@ router.post("/createUser", [
     body("email").isEmail()
 ], async (req, res) => {
     const errors = validationResult(req);
+    let success=false
+    let userexists=false
     if (!errors.isEmpty()) {
-        return res.status(400).json({ errors: errors.array() });
+        return res.status(400).json({ userexists,success,errors: errors.array() });
     }
     try {
         let user = await User.findOne({
@@ -24,7 +26,8 @@ router.post("/createUser", [
         })
         if (user) {
             return res.status(400).json({
-                error: "User already exists!!"
+                error: "User already exists!!",
+                success,userexists:true
             })
         }
         //hashing password before storing
@@ -45,7 +48,7 @@ router.post("/createUser", [
         }
 
         const authToken = jwt.sign(data, JWT_Secret)
-        res.json(authToken)
+        res.json({authToken,success:true,userexists})
     }
     catch (e) {
         console.log(e)
@@ -63,6 +66,7 @@ router.post("/login", [
     body("email", "Invalid Email").isEmail()
 ], async (req, res) => {
     const errors = validationResult(req);
+    let success=false
     if (!errors.isEmpty()) {
         return res.status(400).json({ errors: errors.array() });
     }
@@ -73,12 +77,12 @@ router.post("/login", [
     try {
         let user = await User.findOne({ email })
         if (!user) {
-            return res.status(400).json({ error: "Please login with correct credentials!!" })
+            return res.status(400).json({ success,error: "Please login with correct credentials!!" })
         }
         const passwordCompare = await bcrypt.compare(password, user.password)
         if (!passwordCompare) {
             return res.status(400).json(
-                { error: "Please login with correct credentials!!" }
+                {success, error: "Please login with correct credentials!!" }
             )
         }
         const data = {
@@ -88,7 +92,7 @@ router.post("/login", [
         }
 
         const authToken = jwt.sign(data, JWT_Secret)
-        res.json(authToken)
+        res.json({success:true,authToken})
     }
 
 

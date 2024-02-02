@@ -2,11 +2,14 @@ import React, { useContext } from 'react'
 import edit from "../images/edit.png"
 import trash from "../images/trash-bin.png"
 import noteContext from '../Context/notes/NoteContext'
+import AlertContext from '../Context/alert/AlertContext'
 
 
 const NoteItem = (props) => {
     const { note,updateNote } = props
     const {deleteNote}=useContext(noteContext)
+
+    const {setAlert}=useContext(AlertContext)
 
     // formatting date
     let date = new Date(note.date)
@@ -28,6 +31,8 @@ const NoteItem = (props) => {
                         }}/>
                         <img className="editImg" src={trash} title="Delete The Note❌"  onClick={()=>{
                                  deleteNote(note._id)
+                                 setAlert("Note Deleted","warning",false)
+
                         }}/>
                         
                     </div>

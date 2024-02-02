@@ -1,6 +1,7 @@
-@import url('https://fonts.googleapis.com/css2?family=Genos:wght@300&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Titillium+Web:wght@300&display=swap');
+
 :root{
-  --font1:'Genos', sans-serif;
+  --font1:'Titillium', sans-serif;
 }
 .flex-sB{
   display: flex;
@@ -12,7 +13,7 @@
   margin: 0;
   padding: 0;
   font-family: var(--font1);
-  font-weight: 1000;
+  font-weight: 500;
   overflow-x: hidden;
   
 }
@@ -23,8 +24,8 @@ body{
 
 /* NavBar */
 .navbar-brand {
-  font-weight: 1000;
-  font-size: 4vh;
+  font-weight: 500;
+  font-size: 3vh;
   /* color:blueviolet; */
 }
 
@@ -34,8 +35,8 @@ body{
   width:100vw;
 }
 .nav-link{
- font-size: 3vh;
- font-weight: 900;
+ font-size: 2.5vh;
+ font-weight: 500;
 }
 /* login*/
 form input{
@@ -116,6 +117,14 @@ padding:1vh
 nav span{
   /* border:2px solid red; */
   font-weight: 400;
+}
+
+
+
+/* about */
+.about{
+  text-wrap: wrap;
+  text-align: justify;
 }
 
 /* Media Query */

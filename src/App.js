@@ -10,11 +10,17 @@ import {
 import NoteState from './Context/notes/NoteState';
 import Alert from './components/Alert';
 import Footer from './components/Footer';
+import AlertState from './Context/alert/AlertState';
+import Login from './components/Login';
+import SignUp from './components/SignUp';
 
 function App() {
+
+  
+
   return (
     <>
-      <NoteState>
+      <NoteState><AlertState>
 
         {/* Router */}
 
@@ -25,9 +31,12 @@ function App() {
           <Routes>
             <Route exact path="/" element={<Home />} />
             <Route exact path="/about" element={<About />} />
+            <Route exact path="/login" element={<Login />} />
+            <Route exact path="/signup" element={<SignUp />} />
           </Routes>
-          {/* <Footer/> */}
+          <Footer/>
         </Router>
+        </AlertState>
       </NoteState>
 
     </>
