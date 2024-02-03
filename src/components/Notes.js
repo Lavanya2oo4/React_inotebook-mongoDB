@@ -2,18 +2,29 @@ import React, { useContext, useEffect, useRef, useState } from 'react'
 import noteContext from "../Context/notes/NoteContext"
 import NoteItem from './NoteItem'
 import AlertContext from '../Context/alert/AlertContext'
+import {useNavigate} from "react-router-dom"
 const Notes = () => {
   let context = useContext(noteContext)
   let alertContext=useContext(AlertContext)
 
   const { notes, setNotes, getNotes, editNote } = context
   const {setAlert}=alertContext
+  let navigate=useNavigate()
+
+  useEffect(()=>{
+    if(localStorage.getItem("authToken")){
+           getNotes()
+    }
+    else{
+     navigate("/login")
+    }
+  },[])
 
 
-  //calls get notes only once when page is loaded
-  useEffect(() => {
-    getNotes()
-  }, [])
+  // //calls get notes only once when page is loaded
+  // useEffect(() => {
+  //   getNotes()
+  // }, [])
 
 
 

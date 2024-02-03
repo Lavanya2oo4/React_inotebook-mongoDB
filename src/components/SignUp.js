@@ -1,10 +1,11 @@
 import React, { useContext, useState } from 'react'
-import AlertContext from '../Context/alert/AlertContext'
+import AlertContext from '../Context/alert/AlertContext';
+import { useNavigate } from "react-router-dom";
 const SignUp = () => {
   let host = "http://localhost:5001"
   let alertContext=useContext(AlertContext)
   let {setAlert}=alertContext
-
+  let navigate = useNavigate();
   let authtoken=""
 
   let [userData,setUserData]=useState({
@@ -43,8 +44,7 @@ const SignUp = () => {
    else if(parsed.success){
     setAlert("Account Created","success",false)
     authtoken=parsed.authToken
-    console.log(authtoken)
-
+    navigate('/')
    }
 
 

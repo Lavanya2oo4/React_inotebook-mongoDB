@@ -1,10 +1,11 @@
 import React, { useContext, useState } from 'react'
 import AlertContext from '../Context/alert/AlertContext'
+import {useNavigate} from "react-router-dom"
 const Login = () => {
   let host = "http://localhost:5001"
   let alertContext=useContext(AlertContext)
   let {setAlert}=alertContext
-
+  let navigate=useNavigate()
 
   let [userData,setUserData]=useState({
     email:"",
@@ -20,11 +21,11 @@ const Login = () => {
       setAlert("Terms and conditions must be accepted","warning",false)
       return
     }    
-    else if(userData.email==""){
+    else if(userData.email===""){
       setAlert("Email cannot be blank","warning",false)
       return
     }
-    else if(userData.password==""){
+    else if(userData.password===""){
       setAlert("Password cannot be blank","warning",false)
       return
     }
@@ -47,6 +48,8 @@ const Login = () => {
     }
     else{
       setAlert("User Verified!!","success",false)
+      navigate('/')
+      localStorage.setItem("authToken",parsed.authToken)
     }
 
 
