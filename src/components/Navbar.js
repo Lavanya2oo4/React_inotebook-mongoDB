@@ -4,23 +4,27 @@ import {
     useLocation,
     useNavigate
 } from "react-router-dom";
-
+import user from "../images/user.png"
 
 
 
 const Navbar = () => {
     let location = useLocation()
-    let navigate=useNavigate()
+    let navigate = useNavigate()
 
     // useEffect(() => {
-        // console.log(location)
+    // console.log(location)
 
     // })
 
-    let handleLogout=()=>{
+    let handleLogout = () => {
         localStorage.removeItem("authToken")
         navigate("/login")
     }
+    let showUser=()=>{
+        navigate("/user")
+    }
+
     return (
         <>
 
@@ -46,13 +50,18 @@ const Navbar = () => {
 
                         </ul>
 
-                        {!localStorage.getItem("authToken")?
-                        <form className="d-flex mx-5">
-                        
-                            <Link className='btn btn-light mx-1' to="/login">Login</Link>
-                            <Link className='btn btn-light mx-1' to="/signup">SignUp</Link>
-                        </form>:
-                        <button className='btn btn-light mx-1' onClick={handleLogout}>Logout</button>}
+                        {!localStorage.getItem("authToken") ?
+                            <form className="d-flex mx-5">
+
+                                <Link className='btn btn-light mx-1' to="/login">Login</Link>
+                                <Link className='btn btn-light mx-1' to="/signup">SignUp</Link>
+                            </form> : <>
+                                <button className='btn btn-light mx-1' onClick={handleLogout}>Logout</button>
+                                <img src={user} style={{maxHeight:"3em"}} onClick={showUser} title='User'  className='mx-3'/>
+                                
+
+                            </>
+                        }
 
                     </div>
                 </div>

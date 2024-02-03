@@ -17,11 +17,15 @@ const SignUp = () => {
   const handleSubmit=async(e)=>{
     e.preventDefault()
 
-
+    let email=document.getElementById("email").value
+    let confirmEmail=document.getElementById("confirmEmail").value
+    if(email!==confirmEmail){
+      setAlert("Email addresses didn't match","warning",false)
+      return
+    }
     
     
     
-
 
     let url=host+"/security/auth/createUser"
 
@@ -33,7 +37,6 @@ const SignUp = () => {
       body: JSON.stringify({userName:userData.userName,email:userData.email,password:userData.password}), 
     });
     let parsed= await response.json(); 
-   console.log(parsed)
    if(parsed.userexists){
     setAlert("User Already Exists- Please Login","danger",false)
    
